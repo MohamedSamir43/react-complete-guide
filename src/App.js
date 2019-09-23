@@ -26,7 +26,7 @@ class App extends Component {
 		this.setState({
 			persons: [
 				{
-					name: newName,
+					name: "Maximilian",
 					age: 28,
 				},
 				{
@@ -40,13 +40,35 @@ class App extends Component {
 			],
 		});
 	};
+
+	nameChangedHandler = event => {
+		// console.log("Was clicked!");
+		// this.state.persons[0].name = 'Maximilian' Dont change the state directly like this
+		this.setState({
+			persons: [
+				{
+					name: "Maximilian",
+					age: 28,
+				},
+				{
+					name: event.target.value,
+					age: 29,
+				},
+				{
+					name: "Stephanie",
+					age: 27,
+				},
+			],
+		});
+	};
+
 	render() {
 		return (
 			<div className='App'>
 				<h1>Hi, i'm a react App</h1>
 				<button onClick={() => this.switchNameHandler("Maximilian!!")}>Switch Name</button>
 				<Person name={this.state.persons[0].name} age={this.state.persons[0].age} />
-				<Person name={this.state.persons[1].name} age={this.state.persons[1].age} click={this.switchNameHandler.bind(this, "Max!!")}>
+				<Person name={this.state.persons[1].name} age={this.state.persons[1].age} click={this.switchNameHandler.bind(this, "Max!!")} changed={this.nameChangedHandler}>
 					My Hobbies: Racing
 				</Person>
 				<Person name={this.state.persons[2].name} age={this.state.persons[2].age} />
