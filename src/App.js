@@ -5,14 +5,17 @@ class App extends Component {
 	state = {
 		persons: [
 			{
+				id: "asfa1",
 				name: "Max",
 				age: 28,
 			},
 			{
+				id: "vasdf1",
 				name: "Manu",
 				age: 29,
 			},
 			{
+				id: "asdf1",
 				name: "Stephanie",
 				age: 26,
 			},
@@ -43,7 +46,7 @@ class App extends Component {
 	};
 
 	deletePersonHandler = personIndex => {
-		const persons = this.state.persons;
+		const persons = [...this.state.persons];
 		persons.splice(personIndex, 1);
 		this.setState({ persons: persons });
 	};
@@ -64,7 +67,7 @@ class App extends Component {
 			persons = (
 				<div>
 					{this.state.persons.map((person, index) => {
-						return <Person name={person.name} age={person.age} click={() => this.deletePersonHandler(index)} />;
+						return <Person name={person.name} age={person.age} click={() => this.deletePersonHandler(index)} key={person.id} />;
 					})}
 				</div>
 			);
